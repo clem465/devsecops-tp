@@ -41,3 +41,7 @@ Les actions à effectuer, dans l'ordre :
 5. Vérifier qu'aucun autre secret n'a été exposé et contrôler les alertes Secret Scanning.
 
 **Conclusion : une clé publiée se révoque, elle ne se supprime pas simplement du code.**
+
+|État|Critique|Haute|Modérée|Faible|Total|
+|Avant|0|5|16|7|28|
+|Après|0|0|16|4|20|
