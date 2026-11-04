@@ -1,12 +1,44 @@
 name: CI
-on: [push, pull_request]
+
+on:
+  push:
+  pull_request:
+
 jobs:
   test:
+    name: Tests
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Configurer Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm install
-      - run: npm test
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Exécuter les tests
+        run: npm test
+
+  deps-audit:
+    name: Audit des dépendances
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Configurer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Vérifier les vulnérabilités
+        run: npm audit --audit-level=high

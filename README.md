@@ -42,6 +42,10 @@ Les actions à effectuer, dans l'ordre :
 
 **Conclusion : une clé publiée se révoque, elle ne se supprime pas simplement du code.**
 
+## 2. Dependances
+
+### Tableau d'audit
+
 |État|Critique|Haute|Modérée|Faible|Total|
 |Avant|0|5|16|7|28|
 |Après|0|0|16|4|20|
