@@ -46,6 +46,7 @@ Les actions à effectuer, dans l'ordre :
 
 ### Tableau d'audit
 
-|État|Critique|Haute|Modérée|Faible|Total|
-|Avant|0|5|16|7|28|
-|Après|0|0|16|4|20|
+| État | Critique | Haute | Modérée | Faible | Total |
+| --- | --- | --- | --- | --- | --- |
+| Avant | 0 | 5 | 16  | 7 | 28 |
+| Après | 0 | 0 | 16 | 4 | 20 |
