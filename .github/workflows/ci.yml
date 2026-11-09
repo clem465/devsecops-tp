@@ -2,21 +2,32 @@ name: CI
 
 on:
   push:
+    branches:
+      - main
   pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   test:
-    name: Tests
+    name: test
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
-      - name: Récupérer le code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Configurer Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
       - name: Installer les dépendances
         run: npm ci
@@ -25,20 +36,20 @@ jobs:
         run: npm test
 
   deps-audit:
-    name: Audit des dépendances
+    name: deps-audit
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
-      - name: Récupérer le code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Configurer Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
       - name: Installer les dépendances
         run: npm ci
 
-      - name: Vérifier les vulnérabilités
+      - name: Audit des dépendances
         run: npm audit --audit-level=high
