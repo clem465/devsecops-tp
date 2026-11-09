@@ -50,3 +50,11 @@ Les actions à effectuer, dans l'ordre :
 | --- | --- | --- | --- | --- | --- |
 | Avant | 0 | 5 | 16  | 7 | 28 |
 | Après | 0 | 0 | 16 | 4 | 20 |
+
+## 5. Dockerfile
+
+###
+| Question| Réponse |
+| Couche la plus lourde	| Installation système Debian, 619 MB |
+| .env présent ? |	Oui, s'il existe et n'est pas exclu par .dockerignore. |
+| .git présent ?	| Oui, s'il existe et n'est pas exclu par .dockerignore. |
