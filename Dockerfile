@@ -6,6 +6,9 @@ FROM node:22-alpine AS dependencies
 
 WORKDIR /app
 
+# Mise à jour de npm pour corriger les vulnérabilités
+RUN npm install --global npm@11.21.2
+
 COPY package*.json ./
 
 RUN npm ci --omit=dev
@@ -14,6 +17,9 @@ RUN npm ci --omit=dev
 # Stage 2 : Image finale
 # ==========================================
 FROM node:22-alpine AS production
+
+# Mise à jour de npm dans l'image finale
+RUN npm install --global npm@11.21.2
 
 ENV NODE_ENV=production
 
